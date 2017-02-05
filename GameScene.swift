@@ -19,6 +19,7 @@ struct PhysicsCategories {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var startLbl = SKSpriteNode()
     var background = SKSpriteNode()
     var spaceShip = SKSpriteNode()
     var ground = SKSpriteNode()
@@ -49,6 +50,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func createScene() {
         
         self.physicsWorld.contactDelegate = self
+        
+        startLbl = SKSpriteNode(imageNamed: "TapToPlay")
+        startLbl.position = CGPoint(x: 0, y: self.frame.height / 4)
+        startLbl.size = CGSize(width: 400, height: 150)
+        startLbl.zPosition = 6
+        self.addChild(startLbl)
         
         scoreLbl.position = CGPoint(x: 0, y: self.frame.height / 2.5)
         scoreLbl.fontSize = CGFloat(100)
@@ -153,6 +160,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             gameStarted = true
             
+            startLbl.isHidden = true
+            
             spaceShip.physicsBody?.affectedByGravity = true
             
             let spawn = SKAction.run({
@@ -168,7 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.run(spawnDelayForever)
             
             let distance = CGFloat(self.frame.width + trapPair.frame.width)
-            let moveTraps = SKAction.moveBy(x: -distance - 550, y: 0, duration: TimeInterval(0.0050 * distance))
+            let moveTraps = SKAction.moveBy(x: -distance - 550, y: 0, duration: TimeInterval(0.0046 * distance))
             let removeTraps = SKAction.removeFromParent()
             moveAndRemove = SKAction.sequence([moveTraps, removeTraps])
             
@@ -215,7 +224,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreNode.physicsBody?.categoryBitMask = PhysicsCategories.Score
         scoreNode.physicsBody?.collisionBitMask = 0
         scoreNode.physicsBody?.contactTestBitMask = PhysicsCategories.spaceShip
-        
         
         trapPair = SKNode()
         
