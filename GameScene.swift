@@ -6,6 +6,8 @@
 //  Copyright © 2017 DariusTurner. All rights reserved.
 //
 
+import GoogleMobileAds
+import Firebase
 import SpriteKit
 
 struct PhysicsCategories {
@@ -97,7 +99,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(spaceShip)
         
-
     }
     
     override func didMove(to view: SKView) {
@@ -265,6 +266,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+ 
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         

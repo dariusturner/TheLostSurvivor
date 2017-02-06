@@ -9,8 +9,9 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +30,7 @@ class GameViewController: UIViewController {
             
             // view.showsFPS = true
             // view.showsNodeCount = true
+            
         }
     }
 
@@ -52,4 +54,7 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+
+    
 }

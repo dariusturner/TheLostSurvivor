@@ -6,7 +6,9 @@
 //  Copyright © 2017 DariusTurner. All rights reserved.
 //
 
+import GoogleMobileAds
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
